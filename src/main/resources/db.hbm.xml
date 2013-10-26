@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="org.debz.model.Person" table="person">
+        <meta attribute="class-description">
+            This class contains the Person detail.
+        </meta>
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="names" column="full_names" type="string"/>
+        <property name="gender" column="gender" type="string"/>
+        <property name="occupation" column="occupation" type="string"/>
+        <property name="dob" column="dob" type="date"/>
+    </class>
+
+    <class name="org.debz.model.User" table="users">
+        <id name="sid" type="long" column="sid" >
+            <generator class="increment"/>
+        </id>
+        <property name="f_name">
+            <column name="f_name" />
+        </property>
+        <property name="o_name">
+            <column name="o_name"/>
+        </property>
+        <property name="username">
+            <column name="username"/>
+        </property>
+        <property name="password">
+            <column name="password"/>
+        </property>
+        <property name="date">
+            <column name="date"/>
+        </property>
+        <property name="level">
+            <column name="level"/>
+        </property>
+        <property name="station">
+            <column name="station"/>
+        </property>
+        <property name="email">
+            <column name="email"/>
+        </property>
+    </class>
+</hibernate-mapping>
