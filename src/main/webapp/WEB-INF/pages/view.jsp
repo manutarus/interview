@@ -15,7 +15,7 @@
 </div>
 
 <div id="sidebar">
-    <ng:include src="'resources/partials/wine-list.html'"></ng:include>
+    <ng:include src="'resources/partials/side-list.html'"></ng:include>
 </div>
 
 <div id="content">

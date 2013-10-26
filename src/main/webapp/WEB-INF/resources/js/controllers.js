@@ -2,11 +2,13 @@ function RouteCtrl($route) {
 
     var self = this;
 
-    $route.when('/wines', {template:'resources/partials/welcome.html'});
+    $route.when('/ndivi', {template:'resources/partials/welcome.html'});
 
-    $route.when('/wines/:wineId', {template:'resources/partials/side-list.html', controller:WineDetailCtrl});
+    $route.when('/users', {template:'resources/partials/users.html'});
 
-    $route.otherwise({redirectTo:'/wines'});
+    $route.when('/ndivi/:wineId', {template:'resources/partials/side-list.html', controller:WineDetailCtrl});
+
+    $route.otherwise({redirectTo:'/ndivi'});
 
     $route.onChange(function () {
         self.params = $route.current.params;
@@ -15,14 +17,14 @@ function RouteCtrl($route) {
     $route.parent(this);
 
     this.addWine = function () {
-        window.location = "#/wines/add";
+        window.location = "#/ndivi/add";
     };
 
 }
 
 function WineListCtrl(Wine) {
 
-    this.wines = Wine.query();
+    this.ndivi = Wine.query();
 
 }
 
@@ -36,13 +38,13 @@ function WineDetailCtrl(Wine) {
             this.wine.$update({wineId:this.wine.id});
         else
             this.wine.$save();
-        window.location = "#/wines";
+        window.location = "#/ndivi";
     }
 
     this.deleteWine = function () {
         this.wine.$delete({wineId:this.wine.id}, function() {
             alert('Wine ' + wine.name + ' deleted')
-            window.location = "#/wines";
+            window.location = "#/ndivi";
         });
     }
 
