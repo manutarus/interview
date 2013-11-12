@@ -13,6 +13,7 @@
  */
 package org.debz.utils;
 
+import org.debz.model.Course;
 import org.debz.model.User;
 import org.json.JSONArray;
 
@@ -31,6 +32,17 @@ public class WebConverter {
             converted.put("f_name", user.getF_name());
             converted.put("o_name", user.getO_name());
             converted.put("level", user.getLevel());
+        }
+        return converted;
+    }
+
+    public static Map<String, Object> convertCourse(final Course course) {
+        Map<String, Object> converted = new HashMap<String, Object>();
+        if (course != null) {
+            converted.put("sid", course.getSid());
+            converted.put("name", course.getName());
+            converted.put("units", course.getUnits());
+            converted.put("units_percentage", course.getUnits_percentage());
         }
         return converted;
     }
