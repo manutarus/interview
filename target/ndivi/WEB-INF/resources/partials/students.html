@@ -25,7 +25,7 @@
                 <tr ng-hide="students.length">
                     <td colspan="4">No data in the database.</td>
                 </tr>
-                <tr ng-repeat="student in students | filter:filterStudent() | orderBy:'created':true">
+                <tr ng-repeat="student in students | filter:filterStudent() | orderBy:'sid':true">
                     <td><a href="#/student/{{student.uuid}}"><i class=icon-edit></i></a></td>
                     <td>{{student.surname}}</td>
                     <td>{{student.other_names}}</td>

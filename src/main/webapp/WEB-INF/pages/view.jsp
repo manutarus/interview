@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:ng="http://angularjs.org">
 <head>
-    <title>Debz</title>
+    <title>Exams</title>
 
 
 </head>
@@ -28,20 +28,11 @@
 <script src="resources/js/angular.min.js"></script>
 <script src="resources/js/app.js"></script>
 <script src="resources/js/controllers.js"></script>
-
-
-
-
-
 <link rel="stylesheet" href="resources/styles/custom/custom.css"/>
 <link rel="stylesheet" href="resources/styles/bootstrap/css/bootstrap.css"/>
-
 <script src="resources/js/jquery/jquery.js" />
-
 <script src="resources/js/angular/angular.js"/>
 <script src="resources/js/angular/angular-resource.js"/>
-<script src="resources/js/custom/app.js"/>
-<script src="resources/js/custom/controller.js"/>
 
 <script src="resources/js/ui-bootstrap/ui-bootstrap-custom-0.4.0.js"/>
 <script src="resources/js/ui-bootstrap/ui-bootstrap-custom-tpls-0.4.0.js"/>
