@@ -53,5 +53,14 @@ public class StudentController {
 
     }
 
+    @RequestMapping(value = "student.json", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> getSource(final @RequestParam(value = "reg_no") String reg_no) {
+       // DataService dataService = Context.getService(DataService.class);
+        Student student = studentService.getStudentByReg_no(reg_no);
+        //DataSource dataSource = dataService.getDataSourceByUuid(uuid);
+        return WebConverter.convertStudent(student);
+    }
+
 
 }

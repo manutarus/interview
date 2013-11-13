@@ -27,4 +27,7 @@ public class StudentServiceImpl implements StudentService {
     public Number countStudents() {
         return studentDAO.countStudents();
     }
+    public Student getStudentByReg_no(final String reg_no){
+        return studentDAO.getStudentByReg_no(reg_no);
+    }
 }

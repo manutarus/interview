@@ -29,7 +29,12 @@ public class StudentDAOImpl implements StudentDAO {
     public Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
-
+    public Student getStudentByReg_no(final String reg_no){
+        Criteria criteria = getCurrentSession().createCriteria(Student.class);
+        criteria.add(Restrictions.eq("reg_no", reg_no));
+        criteria.add(Restrictions.eq("suspended",0));
+        return (Student) criteria.uniqueResult();
+    }
 
     public List<Student> getStudents(final String search, final Integer pageNumber, final Integer pageSize) {
         // log.info("Trying to get  number of persons ");

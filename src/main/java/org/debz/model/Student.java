@@ -10,8 +10,16 @@ import java.util.Date;
 public class Student {
     public long sid;
     public String surname, other_names, reg_no;
-    public int year;
+    public int year,suspended;
     public Date created_on;
+
+    public int getSuspended() {
+        return suspended;
+    }
+
+    public void setSuspended(int suspended) {
+        this.suspended = suspended;
+    }
 
     public long getSid() {
         return sid;

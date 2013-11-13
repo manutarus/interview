@@ -6,7 +6,7 @@
 
 </head>
 
-<body ng-app="muzimaPreferredForm">
+<body ng-app="studentMod">
 
 <div id="header">
     <img src="resources/imgs/25888_116229138398995_4560197_a.png" alt="moi uni" width="90" height="90">

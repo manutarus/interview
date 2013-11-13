@@ -56,6 +56,12 @@ public class WebConverter {
             converted.put("other_names", student.getOther_names());
             converted.put("reg_no", student.getReg_no());
             converted.put("year", student.getYear());
+            if(student.getSuspended()==1){
+                converted.put("suspended","Yes");
+            }
+            else{
+                converted.put("suspended","No");
+            }
         }
         return converted;
     }

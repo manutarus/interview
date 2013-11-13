@@ -68,6 +68,9 @@
         <property name="created_on">
             <column name="created_on"/>
         </property>
+        <property name="suspended">
+            <column name="suspended"/>
+        </property>
     </class>
 
 

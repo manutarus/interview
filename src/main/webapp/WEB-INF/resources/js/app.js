@@ -1,6 +1,6 @@
-var muzimaPreferredForm = angular.module('muzimaPreferredForm', [])
+var studentMod = angular.module('studentMod', [])
 
-muzimaPreferredForm.
+studentMod.
     config(['$routeProvider', '$compileProvider', function ($routeProvider, $compileProvider) {
         $compileProvider.urlSanitizationWhitelist(/^\s*(https?|ftp|mailto|file):/);
 
@@ -13,12 +13,14 @@ muzimaPreferredForm.
 
         $routeProvider.when('/students', {controller: 'StudentsCtrl',
             templateUrl: 'resources/partials/students.html'});
+        $routeProvider.when('/student/:reg_no', {controller: 'StudentCtrl',
+            templateUrl: 'resources/partials/student.html'});
 
 
         $routeProvider.otherwise({redirectTo: '/ndivi'});
     }]);
 
-muzimaPreferredForm.factory('$userService', function ($http) {
+studentMod.factory('$userService', function ($http) {
     var getPreferredForms = function (search, pageNumber, pageSize) {
         if (search === undefined) {
             // replace undefined search term with empty string
@@ -97,7 +99,7 @@ muzimaPreferredForm.factory('$userService', function ($http) {
 
 
 
-muzimaPreferredForm.factory('$studentService', function ($http) {
+studentMod.factory('$studentService', function ($http) {
     var getStudents = function (search, pageNumber, pageSize) {
         if (search === undefined) {
             // replace undefined search term with empty string
@@ -105,13 +107,17 @@ muzimaPreferredForm.factory('$studentService', function ($http) {
         }
         return $http.get("list/allStudents.json?search=" + search + "&pageNumber=" + pageNumber + "&pageSize=" + pageSize);
     };
+    var getStudent = function (reg_no) {
+        return $http.get("student.json?reg_no=" + reg_no);
+    };
 
 
 
 
 
     return {
-        getStudents: getStudents
+        getStudents: getStudents,
+        getStudent: getStudent
 
     }
 });
