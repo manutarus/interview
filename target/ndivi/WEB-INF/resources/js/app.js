@@ -11,6 +11,9 @@ muzimaPreferredForm.
         $routeProvider.when('/users', {controller: 'UsersCtrl',
             templateUrl: 'resources/partials/users.html'});
 
+        $routeProvider.when('/students', {controller: 'StudentsCtrl',
+            templateUrl: 'resources/partials/students.html'});
+
 
         $routeProvider.otherwise({redirectTo: '/ndivi'});
     }]);
@@ -23,6 +26,9 @@ muzimaPreferredForm.factory('$userService', function ($http) {
         }
         return $http.get("list/allUsers.json?search=" + search + "&pageNumber=" + pageNumber + "&pageSize=" + pageSize);
     };
+
+
+
 
     var deletePreferredForms = function(uuidList) {
         return $http.post("preferredForms.json", {"uuidList": uuidList});
@@ -86,6 +92,27 @@ muzimaPreferredForm.factory('$userService', function ($http) {
 
         getAttributes: getAttributes,
         getAttribute: getAttribute
+    }
+});
+
+
+
+muzimaPreferredForm.factory('$studentService', function ($http) {
+    var getStudents = function (search, pageNumber, pageSize) {
+        if (search === undefined) {
+            // replace undefined search term with empty string
+            search = '';
+        }
+        return $http.get("list/allStudents.json?search=" + search + "&pageNumber=" + pageNumber + "&pageSize=" + pageSize);
+    };
+
+
+
+
+
+    return {
+        getStudents: getStudents
+
     }
 });
 

@@ -3,17 +3,16 @@ package org.debz.controller;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.debz.model.Course;
+import org.debz.model.Student;
 import org.debz.service.CourseService;
-import org.debz.service.UserService;
+import org.debz.service.StudentService;
 import org.debz.utils.WebConverter;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,18 +21,20 @@ import java.util.Map;
 
 /**
  * User: manu
- * Date: 11/10/13
- * Time: 8:48 AM
+ * Date: 11/12/13
+ * Time: 1:31 PM
  */
+
 @Controller
-public class CoursesController {
+public class StudentController {
+
     @Autowired
-    private CourseService courseService;
+    private StudentService studentService;
 
     private final Log log = LogFactory.getLog(PersonListController.class);
 
 
-    @RequestMapping(value = "/list/allCourses.json", method = RequestMethod.GET)
+    @RequestMapping(value = "/list/allStudents.json", method = RequestMethod.GET)
     public
     @ResponseBody
     Map<String, Object> view(final @RequestParam(value = "search") String search,
@@ -41,15 +42,16 @@ public class CoursesController {
                              final @RequestParam(value = "pageSize") Integer pageSize) {
 
         Map<String, Object> response = new HashMap<String, Object>();
-        int pages = (courseService.countCourses().intValue() + pageSize - 1)/ pageSize;
+        int pages = (studentService.countStudents().intValue() + pageSize - 1)/ pageSize;
         List<Object> objects = new ArrayList<Object>();
-        for (Course courseList : courseService.getCourses(search,pageNumber, pageSize)) {
-            objects.add(WebConverter.convertCourse(courseList));
+        for (Student studentList : studentService.getStudents(search,pageNumber, pageSize)) {
+            objects.add(WebConverter.convertStudent(studentList));
         }
         response.put("pages", pages);
         response.put("objects", objects);
         return response;
 
     }
+
 
 }

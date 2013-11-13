@@ -81,6 +81,9 @@
     <bean id="courseDAO" class="org.debz.DAO.hibernate.CourseDAOImpl"></bean>
     <bean id="courseService" class="org.debz.service.impl.CourseServiceImpl"></bean>
 
+    <bean id="studentDAO" class="org.debz.DAO.hibernate.StudentDAOImpl"></bean>
+    <bean id="studentService" class="org.debz.service.impl.StudentServiceImpl"></bean>
+
     <tx:annotation-driven />
 
     <bean id="transactionManager"

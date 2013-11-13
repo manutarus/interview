@@ -14,6 +14,7 @@
 package org.debz.utils;
 
 import org.debz.model.Course;
+import org.debz.model.Student;
 import org.debz.model.User;
 import org.json.JSONArray;
 
@@ -43,6 +44,18 @@ public class WebConverter {
             converted.put("name", course.getName());
             converted.put("units", course.getUnits());
             converted.put("units_percentage", course.getUnits_percentage());
+        }
+        return converted;
+    }
+
+    public static Map<String, Object> convertStudent(final Student student) {
+        Map<String, Object> converted = new HashMap<String, Object>();
+        if (student != null) {
+            converted.put("sid", student.getSid());
+            converted.put("surname", student.getSurname());
+            converted.put("other_names", student.getOther_names());
+            converted.put("reg_no", student.getReg_no());
+            converted.put("year", student.getYear());
         }
         return converted;
     }

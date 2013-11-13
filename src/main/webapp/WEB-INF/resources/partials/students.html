@@ -1,0 +1,47 @@
+<div id="wide-sidebar" class="row-fluid">
+
+<div class="span8">
+    <div class="clearfix">
+        <div class="row">
+            <div class="span4 pull-left">
+                <a href="#/createStudent">Create Student</a>
+            </div>
+            <div class="span4 pull-right">
+                <input type="text" ng-model="search" class="search-query search-query-size" />
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>surname</th>
+                    <th>Other names</th>
+                    <th>reg_no</th>
+                    <th>year</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-hide="students.length">
+                    <td colspan="4">No data in the database.</td>
+                </tr>
+                <tr ng-repeat="student in students | filter:filterStudent() | orderBy:'sid':true">
+                    <td><a href="#/student/{{student.uuid}}"><i class=icon-edit></i></a></td>
+                    <td>{{student.surname}}</td>
+                    <td>{{student.other_names}}</td>
+                    <td>{{student.reg_no}}</td>
+                    <td>{{student.year}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-show="noOfPages > 1" class="row">
+            <div class="span12 pull-left">
+                <pagination num-pages="noOfPages" current-page="currentPage" max-size="maxSize" boundary-links="true"></pagination>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+

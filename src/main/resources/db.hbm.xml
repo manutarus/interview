@@ -34,8 +34,6 @@
             <column name="email"/>
         </property>
     </class>
-
-
     <class name="org.debz.model.Course" table="courses">
         <id name="sid" type="long" column="sid" >
             <generator class="increment"/>
@@ -49,6 +47,28 @@
         <property name="units_percentage">
             <column name="units_percentage"/>
         </property>
-
     </class>
+
+    <class name="org.debz.model.Student" table="students">
+        <id name="sid" type="long" column="sid" >
+            <generator class="increment"/>
+        </id>
+        <property name="surname">
+            <column name="surname" />
+        </property>
+        <property name="other_names">
+            <column name="other_names"/>
+        </property>
+        <property name="reg_no">
+            <column name="reg_no"/>
+        </property>
+        <property name="year">
+            <column name="year"/>
+        </property>
+        <property name="created_on">
+            <column name="created_on"/>
+        </property>
+    </class>
+
+
 </hibernate-mapping>
