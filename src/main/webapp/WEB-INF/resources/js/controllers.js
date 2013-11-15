@@ -125,26 +125,27 @@ studentMod.controller('StudentCtrl', function($scope, $routeParams, $location, $
     $scope.cancel = function() {
         if ($scope.mode == "edit") {
             if ($scope.uuid === undefined) {
-                $location.path("/sources");
+                $location.path("/students");
             } else {
                 $scope.mode = "view"
             }
         } else {
-            $location.path("/sources");
+            $location.path("/students");
         }
     };
 
-    $scope.save = function(source) {
-        $data.saveSource(source.uuid, source.name, source.description).
-            then(function() {
-                $location.path("/sources");
+    $scope.save = function(student) {
+
+        $studentService.saveStudent(student.sid,student.surname, student.other_names, student.reg_no,student.year,student.suspended).
+
+
+            success(function(){
+                $location.path("/students");
+            })
+            .error(function(){
+                $location.path("/students");
             })
     };
 
-    $scope.delete = function() {
-        $data.deleteSource($scope.uuid).
-            then(function() {
-                $location.path("/sources");
-            })
-    };
 });
+

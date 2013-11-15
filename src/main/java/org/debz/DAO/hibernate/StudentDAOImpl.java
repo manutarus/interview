@@ -29,6 +29,14 @@ public class StudentDAOImpl implements StudentDAO {
     public Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
+
+    public Student saveStudent(Student student){
+        Criteria criteria = getCurrentSession().createCriteria(Student.class);
+        log.info("Student saved");
+        sessionFactory.getCurrentSession().saveOrUpdate(student);
+        return student;
+    }
+
     public Student getStudentByReg_no(final String reg_no){
         Criteria criteria = getCurrentSession().createCriteria(Student.class);
         criteria.add(Restrictions.eq("reg_no", reg_no));

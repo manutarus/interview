@@ -13,6 +13,7 @@ studentMod.
 
         $routeProvider.when('/students', {controller: 'StudentsCtrl',
             templateUrl: 'resources/partials/students.html'});
+
         $routeProvider.when('/student/:reg_no', {controller: 'StudentCtrl',
             templateUrl: 'resources/partials/student.html'});
 
@@ -110,14 +111,15 @@ studentMod.factory('$studentService', function ($http) {
     var getStudent = function (reg_no) {
         return $http.get("student.json?reg_no=" + reg_no);
     };
-
-
-
+    var saveStudent = function (sid,surname, other_names, reg_no,year,suspended) {
+        return $http.post("student.json", {"sid": sid, "surname":surname, "other_names": other_names,"reg_no": reg_no, "year":year, "suspended": suspended});
+    };
 
 
     return {
         getStudents: getStudents,
-        getStudent: getStudent
+        getStudent: getStudent,
+        saveStudent: saveStudent
 
     }
 });
