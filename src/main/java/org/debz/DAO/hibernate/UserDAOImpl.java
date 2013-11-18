@@ -4,10 +4,12 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.debz.DAO.UserDAO;
 import org.debz.model.User;
+import org.debz.utils.BCrypt;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,7 +44,6 @@ public class UserDAOImpl implements UserDAO {
     public void updateUser(User user) {
         User userToUpdate = getUser(user.getSid());
         userToUpdate.setEmail(user.getEmail());
-
         getCurrentSession().update(userToUpdate);
 
     }
@@ -61,28 +62,24 @@ public class UserDAOImpl implements UserDAO {
     @SuppressWarnings("unchecked")
       @Transactional
     public List<User> getUsers() {
-       // log.info("Trying to get  number of persons ");
-//        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
-//       // log.info("Got this number of persons "+ criteria.list().size());
-//       // criteria.addOrder(Order.asc("sid"));
-//        return criteria.list();
         return sessionFactory.getCurrentSession().createQuery("from User").list();
     }
    public List<User> getUsers(final String search, final Integer pageNumber, final Integer pageSize) {
-       // log.info("Trying to get  number of persons ");
-//        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
-//       // log.info("Got this number of persons "+ criteria.list().size());
-//       // criteria.addOrder(Order.asc("sid"));
-//        return criteria.list();
         return sessionFactory.getCurrentSession().createQuery("from User").list();
     }
 
     @Override
     public Number countUsers() {
         Criteria criteria = getCurrentSession().createCriteria(User.class);
-//        criteria.add(Restrictions.eq("retired", Boolean.FALSE));
         criteria.setProjection(Projections.rowCount());
         return (Number) criteria.uniqueResult();
+    }
+
+    public User getUserByUsername(String username){
+
+        Criteria criteria = getCurrentSession().createCriteria(User.class);
+        criteria.add(Restrictions.eq("username", username));
+        return (User) criteria.uniqueResult();
     }
 
 }

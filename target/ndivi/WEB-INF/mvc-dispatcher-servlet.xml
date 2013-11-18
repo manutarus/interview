@@ -29,18 +29,18 @@
         <property name="favorPathExtension" value="false" />
     </bean>
 
-    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
-        <!--<property name="prefix" value="/WEB-INF/pages/"/>-->
-        <!--<property name="suffix" value=""/>-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
 
-    <!--</bean>-->
+    </bean>
 
 
 
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost/exams" />
+        <property name="url" value="jdbc:mysql://localhost/payroll" />
         <property name="username" value="root" />
         <property name="password" value="hit" />
 

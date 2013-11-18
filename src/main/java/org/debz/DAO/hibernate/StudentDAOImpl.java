@@ -40,7 +40,7 @@ public class StudentDAOImpl implements StudentDAO {
     public Student getStudentByReg_no(final String reg_no){
         Criteria criteria = getCurrentSession().createCriteria(Student.class);
         criteria.add(Restrictions.eq("reg_no", reg_no));
-        criteria.add(Restrictions.eq("suspended",0));
+        //criteria.add(Restrictions.eq("suspended",0));
         return (Student) criteria.uniqueResult();
     }
 

@@ -3,6 +3,10 @@
         <div ng-switch="mode">
             <div ng-switch-when="view">
                 <div class="row">
+                    SID #
+                    <input class="span5" ng-model="student.sid" />
+                </div>
+                <div class="row">
                     surname<br>
                     <input class="span10" placeholder="surname ..." type="text"
                            disabled="" ng-model="student.surname">
@@ -36,18 +40,22 @@
             <div ng-switch-when="edit">
                 <form id="consult">
                     <div class="row">
+                        SID #
+                        <input class="span5" ng-model="student.sid" />
+                    </div>
+                    <div class="row">
                         surname<br>
-                        <input class="span10" placeholder="surname ..." type="text"
+                        <input class="span10" placeholder="surname ..." type="text" required
                                ng-model="student.surname">
                     </div>
                     <div class="row">
                         Other names  <br>
-                        <input class="span10" placeholder="other_names ..." rows="10"
+                        <input class="span10" placeholder="other_names ..." type="text" required
                                ng-model="student.other_names">
                     </div>
                     <div class="row">
                         Reg no<br>
-                        <input class="span10" placeholder="reg_no ..." type="text"
+                        <input class="span10" placeholder="reg_no ..." type="text" required
                                ng-model="student.reg_no">
                     </div>
                     <div class="row">

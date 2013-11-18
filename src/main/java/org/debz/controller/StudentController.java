@@ -42,8 +42,8 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    private final Log log = LogFactory.getLog(PersonListController.class);
 
+    private Log log = LogFactory.getLog(this.getClass());
 //    @RequestMapping(method = RequestMethod.GET)
 //    @ResponseBody
 //    public Map<String, Object> getSource(final @RequestParam(value = "uuid") String uuid) {
@@ -56,17 +56,32 @@ public class StudentController {
     public void saveStudent(final @RequestBody Map<String, Object> map) {
 
         String surname = (String) map.get("surname");
-//        String other_names = (String) map.get("other_names");
-//        String reg_no = (String) map.get("reg_no");
-        //DataService dataService = Context.getService(DataService.class);
-//        Student student = studentService.getStudentByReg_no("05B0047");
-        Student student = new Student();
-        student.setSid(1);
-        student.setSurname(surname);
-        student.setOther_names("Lazy");
-        student.setReg_no("05B0047");
-        student.setYear(1);
-        student.setSuspended(0);
-        studentService.saveStudent(student);
+        String other_names = (String) map.get("other_names");
+        String reg_no = (String) map.get("reg_no");
+//        int year = Integer.parseInt("year");
+//        int suspended = Integer.parseInt("suspended");
+        int sid = (Integer) map.get("sid");
+
+        if (StringUtils.isNotBlank(""+sid)) {
+            log.info("-----------");
+            log.info(""+sid);
+            log.info("------------");
+            Student student = studentService.getStudentByReg_no(reg_no);
+            student.setSurname(surname);
+            student.setOther_names(other_names);
+            student.setReg_no(reg_no);
+//            student.setYear(year);
+//            student.setSuspended(suspended);
+            studentService.saveStudent(student);
+        } else {
+            log.info("failed if");
+//            Student student = new Student();
+//            student.setSurname(surname);
+//            student.setOther_names(other_names);
+//            student.setReg_no(reg_no);
+////            student.setYear(year);
+////            student.setSuspended(suspended);
+//            studentService.saveStudent(student);
+        }
     }
 }
