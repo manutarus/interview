@@ -1,5 +1,4 @@
 
-
 payrollMod.controller('HomeCtrl', function($scope) {
 
     $scope.message = 'Payroll home';
@@ -8,7 +7,6 @@ payrollMod.controller('HomeCtrl', function($scope) {
 
 
 payrollMod.controller('GroupsCtrl', function($scope, $location, $groupService) {
-//function UsersCtrlwwww($scope, $location, $userService) {
     // initialize selected error data for re-queueing
     $scope.selected = {};
     // initialize the paging structure
@@ -23,7 +21,7 @@ payrollMod.controller('GroupsCtrl', function($scope, $location, $groupService) {
         });
     $scope.$watch('currentPage', function (newValue, oldValue) {
         if (newValue != oldValue) {
-            $studentService.getGroups($scope.search, $scope.currentPage, $scope.pageSize).
+            $groupService.getGroups($scope.search, $scope.currentPage, $scope.pageSize).
                 then(function (response) {
                     var serverData = response.data;
                     $scope.groups = serverData.objects;
@@ -73,7 +71,10 @@ payrollMod.controller('GroupCtrl', function($scope, $routeParams, $location, $gr
 
     $scope.void = function () {
         $groupService.voidGroup($scope.uuid).
-            then(function () {
+            success(function(){
+                $location.path("/groups");
+            })
+            .error(function(){
                 $location.path("/groups");
             })
     };
@@ -91,50 +92,3 @@ payrollMod.controller('GroupCtrl', function($scope, $routeParams, $location, $gr
     };
 
 });
-
-payrollMod.controller('StudentCtrl', function($scope, $routeParams, $location, $studentService) {
-    // initialize the source object
-    $scope.source = {};
-    // initialize the view to be read only
-    $scope.mode = "view";
-    $scope.reg_no = $routeParams.reg_no;
-    if ($scope.reg_no === undefined) {
-        $scope.mode = "edit";
-    } else {
-        $studentService.getStudent($scope.reg_no).
-            then(function(response) {
-                $scope.student = response.data;
-            });
-    }
-
-    $scope.edit = function() {
-        $scope.mode = "edit";
-    };
-
-    $scope.cancel = function() {
-        if ($scope.mode == "edit") {
-            if ($scope.uuid === undefined) {
-                $location.path("/students");
-            } else {
-                $scope.mode = "view"
-            }
-        } else {
-            $location.path("/students");
-        }
-    };
-
-    $scope.save = function(student) {
-
-        $studentService.saveStudent(student.sid,student.surname, student.other_names, student.reg_no,student.year,student.suspended).
-
-
-            success(function(){
-                $location.path("/students");
-            })
-            .error(function(){
-                $location.path("/students");
-            })
-    };
-
-});
-

@@ -14,13 +14,6 @@ payrollMod.
         $routeProvider.when('/group/:uuid', {controller: 'GroupCtrl',
             templateUrl: 'resources/partials/group.html'});
 
-        $routeProvider.when('/students', {controller: 'StudentsCtrl',
-            templateUrl: 'resources/partials/students.html'});
-
-        $routeProvider.when('/student/:reg_no', {controller: 'StudentCtrl',
-            templateUrl: 'resources/partials/student.html'});
-
-
         $routeProvider.otherwise({redirectTo: '/view'});
     }]);
 
