@@ -34,7 +34,7 @@ public class UsersController {
 
     private static final String LIST_VIEW = "userList";
     private static final String SUCCESS_VIEW = "redirect:/list/users.json";
-    private final Log log = LogFactory.getLog(PersonListController.class);
+    private final Log log = LogFactory.getLog(UsersController.class);
 
     @RequestMapping(value = "users.json", method = RequestMethod.GET)
     public String printPersonList(ModelMap model) {
@@ -55,7 +55,7 @@ public class UsersController {
         int pages = (userService.countUsers().intValue() + pageSize - 1)/ pageSize;
         List<Object> objects = new ArrayList<Object>();
         for (User userList : userService.getUsers(search,pageNumber, pageSize)) {
-            objects.add(WebConverter.convert(userList));
+            objects.add(WebConverter.convertUser(userList));
         }
         response.put("pages", pages);
         response.put("objects", objects);

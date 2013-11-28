@@ -15,7 +15,6 @@ import java.util.List;
  */
 
 @Transactional
-
 public class UserServiceImpl implements UserService {
     
     @Autowired

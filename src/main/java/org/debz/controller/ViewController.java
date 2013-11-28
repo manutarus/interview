@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import java.util.Map;
-
 /**
  * User: manu
  * Date: 11/17/13
@@ -31,7 +29,7 @@ public class ViewController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String index(@RequestParam String username,String password,Model model) {
-        if((!WebConverter.convert(userService.getUserByUsername(username)).isEmpty())
+        if((!WebConverter.convertUser(userService.getUserByUsername(username)).isEmpty())
                 && (BCrypt.checkpw(password, userService.getUserByUsername(username).getPassword())) ){
             log.info(username +" logged in successfully");
             return "view";
@@ -39,6 +37,7 @@ public class ViewController {
         else{
 
             log.info(username + " failed login attempt");
+            log.info(userService.getUserByUsername(username).getPassword() + " failed login attempt");
             return "error";
         }
     }

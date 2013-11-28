@@ -13,8 +13,7 @@
  */
 package org.debz.utils;
 
-import org.debz.model.Course;
-import org.debz.model.Student;
+import org.debz.model.Payment_group;
 import org.debz.model.User;
 import org.json.JSONArray;
 
@@ -26,7 +25,7 @@ import java.util.Map;
  */
 public class WebConverter {
 
-    public static Map<String, Object> convert(final User user) {
+    public static Map<String, Object> convertUser(final User user) {
         Map<String, Object> converted = new HashMap<String, Object>();
         if (user != null) {
             JSONArray list = new JSONArray();
@@ -37,31 +36,15 @@ public class WebConverter {
         return converted;
     }
 
-    public static Map<String, Object> convertCourse(final Course course) {
+    public static Map<String, Object> convertPayment_group(final Payment_group payment_group) {
         Map<String, Object> converted = new HashMap<String, Object>();
-        if (course != null) {
-            converted.put("sid", course.getSid());
-            converted.put("name", course.getName());
-            converted.put("units", course.getUnits());
-            converted.put("units_percentage", course.getUnits_percentage());
-        }
-        return converted;
-    }
+        if (payment_group != null) {
+            converted.put("sid", payment_group.getSid());
+            converted.put("name", payment_group.getName());
+            converted.put("rate_per_hour", payment_group.getRate_per_hour());
+            converted.put("basic_pay",payment_group.getBasic_pay());
+            converted.put("uuid", payment_group.getUuid());
 
-    public static Map<String, Object> convertStudent(final Student student) {
-        Map<String, Object> converted = new HashMap<String, Object>();
-        if (student != null) {
-            converted.put("sid", student.getSid());
-            converted.put("surname", student.getSurname());
-            converted.put("other_names", student.getOther_names());
-            converted.put("reg_no", student.getReg_no());
-            converted.put("year", student.getYear());
-            if(student.getSuspended()==1){
-                converted.put("suspended","Yes");
-            }
-            else{
-                converted.put("suspended","No");
-            }
         }
         return converted;
     }

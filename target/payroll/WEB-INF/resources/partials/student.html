@@ -1,0 +1,81 @@
+<div id="wide-sidebar" class="row-fluid">
+    <div class="span8">
+        <div ng-switch="mode">
+            <div ng-switch-when="view">
+                <div class="row">
+                    SID #
+                    <input class="span5" ng-model="student.sid" />
+                </div>
+                <div class="row">
+                    surname<br>
+                    <input class="span10" placeholder="surname ..." type="text"
+                           disabled="" ng-model="student.surname">
+                </div>
+                <div class="row">
+                    Other names  <br>
+                    <input class="span10" placeholder="other_names ..." rows="10"
+                              disabled="" ng-model="student.other_names">
+                </div>
+                <div class="row">
+                    Reg no<br>
+                    <input class="span10" placeholder="reg_no ..." type="text"
+                           disabled="" ng-model="student.reg_no">
+                </div>
+                <div class="row">
+                    Year<br>
+                    <input class="span10" placeholder="year ..." type="text"
+                           disabled="" ng-model="student.year">
+                </div>
+                <div class="row">
+                    Suspended<br>
+                    <input class="span10" placeholder="suspended ..." type="text"
+                           disabled="" ng-model="student.suspended">
+                </div>
+                <div class="row">
+                    <button type="submit" ng-click="edit()" class="btn">Edit</button>
+                    <button type="submit" ng-click="cancel()" class="btn">Close</button>
+                </div>
+                <span></span>
+            </div>
+            <div ng-switch-when="edit">
+                <form id="consult">
+                    <div class="row">
+                        SID #
+                        <input class="span5" ng-model="student.sid" />
+                    </div>
+                    <div class="row">
+                        surname<br>
+                        <input class="span10" placeholder="surname ..." type="text" required
+                               ng-model="student.surname">
+                    </div>
+                    <div class="row">
+                        Other names  <br>
+                        <input class="span10" placeholder="other_names ..." type="text" required
+                               ng-model="student.other_names">
+                    </div>
+                    <div class="row">
+                        Reg no<br>
+                        <input class="span10" placeholder="reg_no ..." type="text" required
+                               ng-model="student.reg_no">
+                    </div>
+                    <div class="row">
+                        Year<br>
+                        <input class="span10" placeholder="year ..." type="text"
+                               ng-model="student.year">
+                    </div>
+                    <div class="row">
+                        Suspended<br>
+                        <input class="span10" placeholder="suspended ..." type="text"
+                               ng-model="student.suspended">
+                    </div>
+                    <div class="row">
+                        <button type="submit" ng-click="save(student)" class="btn">Save</button>
+                        <button ng-show="student.uuid" type="submit" ng-click="delete()" class="btn">suspend</button>
+                        <button type="submit" ng-click="cancel()" class="btn">Cancel</button>
+                    </div>
+                    <span></span>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -34,44 +34,28 @@
             <column name="email"/>
         </property>
     </class>
-    <class name="org.debz.model.Course" table="courses">
+
+    <class name="org.debz.model.Payment_group" table="payment_group">
         <id name="sid" type="long" column="sid" >
             <generator class="increment"/>
         </id>
         <property name="name">
             <column name="name" />
         </property>
-        <property name="units">
-            <column name="units"/>
+        <property name="rate_per_hour">
+            <column name="rate_per_hour"/>
         </property>
-        <property name="units_percentage">
-            <column name="units_percentage"/>
+        <property name="basic_pay">
+            <column name="basic_pay"/>
         </property>
-    </class>
-
-    <class name="org.debz.model.Student" table="students">
-        <id name="sid" type="long" column="sid" >
-            <generator class="increment"/>
-        </id>
-        <property name="surname">
-            <column name="surname" />
+        <property name="date_created">
+            <column name="date_created"/>
         </property>
-        <property name="other_names">
-            <column name="other_names"/>
+        <property name="voided">
+            <column name="void"/>
         </property>
-        <property name="reg_no">
-            <column name="reg_no"/>
-        </property>
-        <property name="year">
-            <column name="year"/>
-        </property>
-        <property name="created_on">
-            <column name="created_on"/>
-        </property>
-        <property name="suspended">
-            <column name="suspended"/>
+        <property name="uuid">
+            <column name="uuid"/>
         </property>
     </class>
-
-
 </hibernate-mapping>
