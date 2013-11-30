@@ -37,7 +37,6 @@ public class ViewController {
         else{
 
             log.info(username + " failed login attempt");
-            log.info(userService.getUserByUsername(username).getPassword() + " failed login attempt");
             return "error";
         }
     }

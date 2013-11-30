@@ -14,6 +14,9 @@ payrollMod.
         $routeProvider.when('/group/:uuid', {controller: 'GroupCtrl',
             templateUrl: 'resources/partials/group.html'});
 
+        $routeProvider.when('/createGroup', {controller: 'GroupCtrl',
+            templateUrl: 'resources/partials/group.html'});
+
         $routeProvider.otherwise({redirectTo: '/view'});
     }]);
 
@@ -30,7 +33,7 @@ payrollMod.factory('$groupService', function ($http) {
     };
     var saveGroup = function (uuid,name,rate_per_hour, basic_pay) {
 
-        return $http.post("group.json", {"uuid": uuid, "name": name, "rate_per_hour":rate_per_hour, "basic_pay": basic_pay});
+        return $http.post("groupUpdateSave.json", {"uuid": uuid, "name": name, "rate_per_hour":rate_per_hour, "basic_pay": basic_pay});
     };
     var voidGroup = function (uuid) {
         return $http.post("group.json", {"uuid": uuid});

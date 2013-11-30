@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * User: manu
@@ -53,7 +50,7 @@ public class Payment_groupController {
         return WebConverter.convertPayment_group(payment_groupService.getPayment_groupByUuid(uuid));
     }
 
-    @RequestMapping(value = "/group.json",method = RequestMethod.POST)
+    @RequestMapping(value = "/groupUpdateSave.json",method = RequestMethod.POST)
     public void voidSaveGroup(final @RequestBody Map<String, Object> map) {
 
         String uuid = (String) map.get("uuid");
@@ -80,6 +77,7 @@ public class Payment_groupController {
             payment_group.setName(name);
             payment_group.setRate_per_hour(rate_per_hour);
             payment_group.setBasic_pay(basic_pay);
+            payment_group.setUuid(UUID.randomUUID().toString());
             payment_groupService.savePayment_group(payment_group);
         }
     }

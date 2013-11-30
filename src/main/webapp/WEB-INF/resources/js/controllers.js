@@ -89,6 +89,7 @@ payrollMod.controller('GroupCtrl', function($scope, $routeParams, $location, $gr
             .error(function(){
                 $location.path("/groups");
             })
+
     };
 
 });

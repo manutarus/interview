@@ -26,7 +26,7 @@
                     <td colspan="4">No data in the database.</td>
                 </tr>
                 <tr ng-repeat="group in groups | filter:filterGroup() | orderBy:'sid':true">
-                    <td><a href="#/group/{{group.uuid}}"><i class=icon-edit></i></a></td>
+                    <td><a href="#/group/{{group.uuid}}">{{(currentPage - 1) * maxSize + $index + 1}}.&nbsp;<i class=icon-edit></i></a></td>
                     <td>{{group.name}}</td>
                     <td>{{group.rate_per_hour}}</td>
                     <td>{{group.basic_pay}}</td>
@@ -37,6 +37,7 @@
         <div ng-show="noOfPages > 1" class="row">
             <div class="span12 pull-left">
                 <pagination num-pages="noOfPages" current-page="currentPage" max-size="maxSize" boundary-links="true"></pagination>
+                <pagination rotate="true" num-pages="noOfPages" current-page="currentPage" max-size="maxSize" class="pagination-small" boundary-links="true"></pagination>
             </div>
         </div>
     </div>
