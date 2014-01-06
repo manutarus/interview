@@ -4,7 +4,7 @@
     <div class="clearfix">
         <div class="row">
             <div class="span4 pull-left">
-                <a href="#/createGroup">Create Group</a>
+                <a href="#/createGroup">Create Member</a>
             </div>
             <div class="span4 pull-right">
                 <input type="text" ng-model="search" class="search-query search-query-size" />
@@ -15,21 +15,21 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Rate/Hour</th>
-                    <th>Basic pay</th>
+                    <th>surname</th>
+                    <th>other_names</th>
+                    <th>phone_number</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-hide="groups.length">
+                <tr ng-hide="members.length">
 
                     <td colspan="4">No data in the database.</td>
                 </tr>
-                <tr ng-repeat="group in groups | filter:filterGroup() | orderBy:'sid':true">
-                    <td><a href="#/group/{{group.uuid}}">{{(currentPage - 1) * maxSize + $index + 1}}.&nbsp;<i class=icon-edit></i></a></td>
-                    <td>{{group.name}}</td>
-                    <td>{{group.rate_per_hour}}</td>
-                    <td>{{group.basic_pay}}</td>
+                <tr ng-repeat="member in members | filter:filterGroup() | orderBy:'sid':true">
+                    <td><a href="#/member/{{member.uuid}}">{{(currentPage - 1) * maxSize + $index + 1}}.&nbsp;<i class=icon-edit></i></a></td>
+                    <td>{{member.surname}}</td>
+                    <td>{{member.other_names}}</td>
+                    <td>{{member.phone_number}}</td>
                 </tr>
                 </tbody>
             </table>
@@ -37,7 +37,6 @@
         <div ng-show="noOfPages > 1" class="row">
             <div class="span12 pull-left">
                 <pagination num-pages="noOfPages" current-page="currentPage" max-size="maxSize" boundary-links="true"></pagination>
-                <pagination rotate="true" num-pages="noOfPages" current-page="currentPage" max-size="maxSize" class="pagination-small" boundary-links="true"></pagination>
             </div>
         </div>
     </div>

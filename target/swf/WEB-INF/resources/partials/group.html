@@ -1,0 +1,68 @@
+<body ng-app="">
+
+<div id="wide-sidebar" class="row-fluid">
+    <div class="span8">
+        <div ng-switch="mode">
+            <div ng-switch-when="view">
+
+                <div class="row">
+                    Name<br>
+                    <input class="span10" placeholder="name ..." type="text"
+                           disabled="" ng-model="group.name">
+                </div>
+                <div class="row">
+                    Rate/Hour  <br>
+                    <input class="span10" placeholder="Rate/Hour ..." type="text"
+                           disabled="" ng-model="group.rate_per_hour">
+                </div>
+                <div class="row">
+                    Basic pay<br>
+                    <input class="span10" placeholder="Basic pay ..." type="text"
+                           disabled="" ng-model="group.basic_pay">
+                </div>
+                <div class="row">
+                    UUID<br>
+                    <input class="span10" placeholder="uuid ..." type="text"
+                           disabled="" ng-model="group.uuid">
+                </div>
+                <div class="row">
+                    <button type="submit" ng-click="edit()" class="btn">Edit</button>
+                    <button type="submit" ng-click="cancel()" class="btn">Close</button>
+                </div>
+                <span></span>
+            </div>
+            <div ng-switch-when="edit">
+                <form id="consult">
+
+                    <div class="row">
+                        Name<br>
+                        <input class="span10" placeholder="name ..." type="text"
+                                ng-model="group.name"  required>
+                    </div>
+                    <div class="row">
+                        Rate/Hour  <br>
+                        <input class="span10" placeholder="Rate/Hour ..." type="text"
+                               ng-model="group.rate_per_hour" required>
+                    </div>
+                    <div class="row">
+                        Basic pay  <br>
+                        <input class="span10" placeholder="Basic pay ..." type="text" required=""
+                               ng-model="group.basic_pay" required>
+                    </div>
+                    <div class="row">
+                        UUID<br>
+                        <input class="span10" placeholder="uuid ..." type="text"
+                               disabled="" ng-model="group.uuid">
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-success" type="submit" ng-click="save(group)" class="btn">Save</button>
+                        <button ng-show="group.uuid" type="submit" ng-click="delete()" class="btn">suspend</button>
+                        <button type="submit" ng-click="cancel()" class="btn">Cancel</button>
+                    </div>
+                    <span></span>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

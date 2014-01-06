@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.springapp</groupId>
-    <artifactId>payroll</artifactId>
+    <artifactId>swf</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>payroll</name>
+    <name>swf</name>
 
 
     <properties>
@@ -280,7 +280,7 @@
     </dependencies>
 
     <build>
-        <finalName>payroll</finalName>
+        <finalName>swf</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>

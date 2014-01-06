@@ -58,4 +58,43 @@
             <column name="uuid"/>
         </property>
     </class>
+
+    <class name="org.debz.model.Member" table="member">
+        <id name="sid" type="long" column="sid" >
+            <generator class="increment"/>
+        </id>
+        <property name="surname">
+            <column name="surname" />
+        </property>
+        <property name="other_names">
+            <column name="other_names"/>
+        </property>
+        <property name="gender">
+            <column name="gender"/>
+        </property>
+        <property name="phone_number">
+            <column name="phone_number"/>
+        </property>
+        <property name="id_number">
+            <column name="id_number"/>
+        </property>
+        <property name="date_created" type="date">
+            <column name="date_created"/>
+        </property>
+        <property name="creator">
+            <column name="creator"/>
+        </property>
+        <property name="uuid">
+            <column name="uuid"/>
+        </property>
+        <property name="voided">
+            <column name="voided"/>
+        </property>
+        <property name="voided_by">
+            <column name="voided_by"/>
+        </property>
+        <property name="date_voided">
+            <column name="date_voided"/>
+        </property>
+    </class>
 </hibernate-mapping>

@@ -13,10 +13,12 @@
  */
 package org.debz.utils;
 
+import org.debz.model.Member;
 import org.debz.model.Payment_group;
 import org.debz.model.User;
 import org.json.JSONArray;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,6 +47,35 @@ public class WebConverter {
             converted.put("basic_pay",payment_group.getBasic_pay());
             converted.put("uuid", payment_group.getUuid());
 
+        }
+        return converted;
+    }
+    public static Map<String, Object> convertMember(final Member member) {
+        Map<String, Object> converted = new HashMap<String, Object>();
+        if (member != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            converted.put("sid", member.getSid());
+            converted.put("surname", member.getSurname());
+            converted.put("other_names", member.getOther_names());
+            if(member.getGender().equals("f")){
+                converted.put("gender","Female");
+            }
+            else {
+                converted.put("gender","Male");
+            }
+            converted.put("phone_number", member.getPhone_number());
+            converted.put("id_number", member.getId_number());
+            converted.put("date_created", sdf.format(member.getDate_created()));
+            converted.put("creator", member.getCreator());
+            converted.put("uuid", member.getUuid());
+            if(member.voided.equals("1")){
+                converted.put("voided", "Voided");
+                converted.put("date_voided", sdf.format(member.getDate_voided()));
+            }
+            else {
+                converted.put("voided", "Active");
+
+            }
         }
         return converted;
     }
