@@ -35,66 +35,50 @@
         </property>
     </class>
 
-    <class name="org.debz.model.Payment_group" table="payment_group">
+    <class name="org.debz.model.Customer" table="customers">
         <id name="sid" type="long" column="sid" >
             <generator class="increment"/>
         </id>
         <property name="name">
             <column name="name" />
         </property>
-        <property name="rate_per_hour">
-            <column name="rate_per_hour"/>
+
+        <property name="id_number">
+            <column name="id_number"/>
         </property>
-        <property name="basic_pay">
-            <column name="basic_pay"/>
+
+        <property name="phone_number">
+            <column name="phone_number"/>
         </property>
-        <property name="date_created">
-            <column name="date_created"/>
-        </property>
-        <property name="voided">
-            <column name="void"/>
+        <property name="current_balance">
+            <column name="current_balance"/>
         </property>
         <property name="uuid">
             <column name="uuid"/>
         </property>
     </class>
 
-    <class name="org.debz.model.Member" table="member">
+    <class name="org.debz.model.Agent" table="agents">
         <id name="sid" type="long" column="sid" >
             <generator class="increment"/>
         </id>
-        <property name="surname">
-            <column name="surname" />
+        <property name="agent_number">
+            <column name="agent_number" />
         </property>
-        <property name="other_names">
-            <column name="other_names"/>
+
+        <property name="company_name">
+            <column name="company_name"/>
         </property>
-        <property name="gender">
-            <column name="gender"/>
-        </property>
-        <property name="phone_number">
-            <column name="phone_number"/>
-        </property>
-        <property name="id_number">
-            <column name="id_number"/>
-        </property>
-        <property name="date_created" type="date">
-            <column name="date_created"/>
-        </property>
-        <property name="creator">
-            <column name="creator"/>
+        <property name="location">
+            <column name="location"/>
         </property>
         <property name="uuid">
             <column name="uuid"/>
         </property>
-        <property name="voided">
-            <column name="voided"/>
-        </property>
-        <property name="voided_by">
-            <column name="voided_by"/>
-        </property>
-        <property name="date_voided">
-            <column name="date_voided"/>
-        </property>
     </class>
+
+
+
+
+
 </hibernate-mapping>

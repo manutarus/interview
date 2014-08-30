@@ -10,16 +10,13 @@
 
 <div id="header">
     <p><p></p></p>
-    <img src="resources/imgs/swf.png" alt="moi uni" width="140" height="140">
     <span style="font-family: Verdana; font-size: x-large;  text-decoration: underline; text-align: center;">SWF society Trust and Commitment, is our BOND</span>
-
-
 
 </div>
 
 
 <div id="sidebar">
-    <ng:include src="'resources/partials/side-list.html'"></ng:include>
+    <ng:include src="'resources/partials/side.html'"></ng:include>
 </div>
 
 <div id="content">

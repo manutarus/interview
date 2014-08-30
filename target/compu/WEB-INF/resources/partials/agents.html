@@ -1,0 +1,47 @@
+<div id="wide-sidebar" class="row-fluid">
+
+    <div class="span8">
+        <div class="clearfix">
+            <div class="row">
+                <div class="span4 pull-left">
+                    <a href="#/createGroup">Create Agent</a>
+                </div>
+                <div class="span4 pull-right">
+                    <input type="text" ng-model="search" class="search-query search-query-size" />
+                </div>
+            </div>
+            <div class="row">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>agent_number</th>
+                        <th>company_name</th>
+                        <th>location</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-hide="agents.length">
+
+                        <td colspan="4">No data in the database.</td>
+                    </tr>
+                    <tr ng-repeat="agent in agents | filter:filterGroup() | orderBy:'sid':true">
+                        <td><a href="#/agent/{{agent.uuid}}">{{(currentPage - 1) * maxSize + $index + 1}}.&nbsp;<i class=icon-edit></i></a></td>
+                        <td>{{agent.agent_number}}</td>
+                        <td>{{agent.company_name}}</td>
+                        <td>{{agent.location}}</td>
+                        <td>{{agent.uuid}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-show="noOfPages > 1" class="row">
+                <div class="span12 pull-left">
+                    <pagination num-pages="noOfPages" current-page="currentPage" max-size="maxSize" boundary-links="true"></pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

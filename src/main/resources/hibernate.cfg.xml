@@ -7,8 +7,8 @@
 
         <!-- List of XML mapping classes -->
         <mapping class="org.debz.model.User" />
-        <mapping class="org.debz.model.Payment_group" />
-        <mapping class="org.debz.model.Member" />
+        <mapping class="org.debz.model.Agent" />
+        <mapping class="org.debz.model.Customer" />
         <!-- List of XML mapping files -->
         <mapping resource="db.hbm.xml"></mapping>
 

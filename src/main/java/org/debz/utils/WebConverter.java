@@ -13,12 +13,9 @@
  */
 package org.debz.utils;
 
-import org.debz.model.Member;
-import org.debz.model.Payment_group;
+import org.debz.model.Agent;
+import org.debz.model.Customer;
 import org.debz.model.User;
-import org.json.JSONArray;
-
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,7 +27,6 @@ public class WebConverter {
     public static Map<String, Object> convertUser(final User user) {
         Map<String, Object> converted = new HashMap<String, Object>();
         if (user != null) {
-            JSONArray list = new JSONArray();
             converted.put("f_name", user.getF_name());
             converted.put("o_name", user.getO_name());
             converted.put("level", user.getLevel());
@@ -38,44 +34,27 @@ public class WebConverter {
         return converted;
     }
 
-    public static Map<String, Object> convertPayment_group(final Payment_group payment_group) {
+    public static Map<String, Object> convertCustomer(final Customer customer) {
         Map<String, Object> converted = new HashMap<String, Object>();
-        if (payment_group != null) {
-            converted.put("sid", payment_group.getSid());
-            converted.put("name", payment_group.getName());
-            converted.put("rate_per_hour", payment_group.getRate_per_hour());
-            converted.put("basic_pay",payment_group.getBasic_pay());
-            converted.put("uuid", payment_group.getUuid());
-
+        if (customer != null) {
+            converted.put("sid", customer.getSid());
+            converted.put("name", customer.getName());
+            converted.put("phone_number", customer.getPhone_number());
+            converted.put("id_number", customer.getId_number());
+            converted.put("current_balance", customer.getCurrent_balance());
+            converted.put("uuid", customer.getUuid());
         }
         return converted;
     }
-    public static Map<String, Object> convertMember(final Member member) {
-        Map<String, Object> converted = new HashMap<String, Object>();
-        if (member != null) {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            converted.put("sid", member.getSid());
-            converted.put("surname", member.getSurname());
-            converted.put("other_names", member.getOther_names());
-            if(member.getGender().equals("f")){
-                converted.put("gender","Female");
-            }
-            else {
-                converted.put("gender","Male");
-            }
-            converted.put("phone_number", member.getPhone_number());
-            converted.put("id_number", member.getId_number());
-            converted.put("date_created", sdf.format(member.getDate_created()));
-            converted.put("creator", member.getCreator());
-            converted.put("uuid", member.getUuid());
-            if(member.voided.equals("1")){
-                converted.put("voided", "Voided");
-                converted.put("date_voided", sdf.format(member.getDate_voided()));
-            }
-            else {
-                converted.put("voided", "Active");
 
-            }
+    public static Map<String, Object> convertAgent(final Agent agent) {
+        Map<String, Object> converted = new HashMap<String, Object>();
+        if (agent != null) {
+            converted.put("sid", agent.getSid());
+            converted.put("company_name",agent.getCompany_name());
+            converted.put("agent_number", agent.getAgent_number());
+            converted.put("location", agent.getLocation());
+            converted.put("uuid", agent.getUuid());
         }
         return converted;
     }
