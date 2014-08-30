@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:ng="http://angularjs.org">
 <head>
-    <title>swf</title>
+    <title>compu</title>
 
 
 </head>
@@ -10,7 +10,7 @@
 
 <div id="header">
     <p><p></p></p>
-    <span style="font-family: Verdana; font-size: x-large;  text-decoration: underline; text-align: center;">SWF society Trust and Commitment, is our BOND</span>
+    <span style="font-family: Verdana; font-size: x-large;  text-decoration: underline; text-align: center;">M-PESA Trust and Commitment, is our BOND</span>
 
 </div>
 
